@@ -37,12 +37,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-
+        // Setter hode og hale til null. Antall og endringer settes til 0.
+        hode = null;
+        hale = null;
+        antall = 0;
+        endringer = 0;
         //throw new UnsupportedOperationException();
     }
 
     public DobbeltLenketListe(T[] a) {
-        throw new UnsupportedOperationException();
+
+        //throw new UnsupportedOperationException();
     }
 
     public Liste<T> subliste(int fra, int til) {
@@ -57,9 +62,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean tom() {
-        if(antall==0){
+        if (antall == 0) {
             return true;
-        } else{
+        } else {
             return false;
         }
         //throw new UnsupportedOperationException();
@@ -164,6 +169,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    //Test oppg 1
+    public static void main(String[] args) {
+        Liste<String> liste = new DobbeltLenketListe<>();
+        System.out.println(liste.antall() + " " + liste.tom());
+    }
+
 } // class DobbeltLenketListe
+
+
 
 
