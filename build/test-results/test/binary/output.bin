@@ -1,7 +1,107 @@
-:Oppgave 1c: Det skal kastes en NullPointerExcepiton her!
-$Oppgave 1g: Feil i konstruktøren!
-$Oppgave 1h: Feil i konstruktøren!
-$Oppgave 1i: Feil i konstruktøren!
-$Oppgave 1j: Feil i konstruktøren!
-$Oppgave 1o: Feil i konstruktøren!
-$Oppgave 1p: Feil i konstruktøren!
+Hode forrige: null
+Hode neste: null
+Hale forrige: null
+Hale neste: null
+Første ikke null indeks: 0
+Lagret node verdi: 1
+Hode forrige: null
+Hode neste: null
+Hale forrige: null
+Hale neste: null
+Første ikke null indeks: 0
+Lagret node verdi: 1
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@2ab4bc72
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@2ab4bc72
+Hale neste: null
+Lagret node verdi: 2
+Hode forrige: null
+Hode neste: null
+Hale forrige: null
+Hale neste: null
+Første ikke null indeks: 0
+Lagret node verdi: 1
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@4e5ed836
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@4e5ed836
+Hale neste: null
+Lagret node verdi: 2
+KNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@eadd4fb
+Node neste: null
+KHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@eadd4fb
+Hale neste: null
+Lagret node verdi: 3
+Hode forrige: null
+Hode neste: null
+Hale forrige: null
+Hale neste: null
+Første ikke null indeks: 0
+Lagret node verdi: 1
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@740fb309
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@740fb309
+Hale neste: null
+Lagret node verdi: 2
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@7bd7d6d6
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@7bd7d6d6
+Hale neste: null
+Lagret node verdi: 3
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@43f02ef2
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@43f02ef2
+Hale neste: null
+Lagret node verdi: 4
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@239a307b
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@239a307b
+Hale neste: null
+Lagret node verdi: 5
+Hode forrige: null
+Hode neste: null
+Hale forrige: null
+Hale neste: null
+Første ikke null indeks: 1
+Lagret node verdi: 1
+Hode forrige: null
+Hode neste: null
+Hale forrige: null
+Hale neste: null
+Første ikke null indeks: 1
+Lagret node verdi: 1
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@2a8448fa
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@2a8448fa
+Hale neste: null
+Lagret node verdi: 2
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@6f204a1a
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@6f204a1a
+Hale neste: null
+Lagret node verdi: 3
+Hode forrige: null
+Hode neste: null
+Hale forrige: null
+Hale neste: null
+Første ikke null indeks: 0
+Lagret node verdi: 1
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@5f8e8a9d
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@5f8e8a9d
+Hale neste: null
+Lagret node verdi: 2
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@5745ca0e
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@5745ca0e
+Hale neste: null
+Lagret node verdi: 3
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@3ad83a66
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@3ad83a66
+Hale neste: null
+Lagret node verdi: 4
+LNode forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@3cce5371
+Node neste: null
+LHale forrige: no.oslomet.cs.algdat.Oblig2.DobbeltLenketListe$Node@3cce5371
+Hale neste: null
+Lagret node verdi: 5

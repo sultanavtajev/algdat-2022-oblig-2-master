@@ -6,6 +6,7 @@ package no.oslomet.cs.algdat.Oblig2;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -46,8 +47,39 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public DobbeltLenketListe(T[] a) {
+        //Sjekker om tabellen er null og gir i såfall feilmelding
+        Objects.requireNonNull(a, "Tabellen a er null");
 
-        //throw new UnsupportedOperationException();
+        //Finner posisjon til første verdi i tabell "a" som ikke er "null"
+        int i = 0;
+        if (a.length != 0) {
+            for (; i < a.length; i++) {
+                if (a[i] != null) {
+                    Node<T> nyNode = new Node<>(a[i], null, null);
+                    hode = nyNode;
+                    nyNode.forrige = hode;
+                    hode.neste = nyNode;
+                    hode.forrige = null;
+                    hale = nyNode;
+                    hale.neste = null;
+                    antall++;
+                    endringer++;
+                    i++;
+                    break;
+                }
+            }
+
+            for (; i < a.length; i++) {
+                if (a[i] != null) {
+                    Node<T> nyNode = new Node<>(a[i], hale, null);
+                    hale = nyNode;
+                    hale.neste = null;
+                    antall++;
+                    endringer++;
+                }
+            }
+        }
+        // throw new UnsupportedOperationException();
     }
 
     public Liste<T> subliste(int fra, int til) {
@@ -171,7 +203,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     //Test oppg 1
     public static void main(String[] args) {
-        Liste<String> liste = new DobbeltLenketListe<>();
+        Integer[] a = {null, null, null, 1,2,3,4,5,6,7,8};
+        Liste<Integer> liste = new DobbeltLenketListe<>(a);
         System.out.println(liste.antall() + " " + liste.tom());
     }
 
