@@ -52,35 +52,31 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //Finner posisjon til første verdi i tabell "a" som ikke er "null"
         int i = 0;
-        if (a.length != 0) {
-            for (; i < a.length; i++) {
-                if (a[i] != null) {
-                    Node<T> nyNode = new Node<>(a[i], null, null);
-                    hode = nyNode;
-                    nyNode.forrige = hode;
-                    hode.neste = nyNode;
-                    hode.forrige = null;
-                    hale = nyNode;
-                    hale.neste = null;
-                    antall++;
-                    endringer++;
-                    i++;
-                    break;
-                }
-            }
+        for (; i < a.length && a[i] == null; i++) ;
 
-            for (; i < a.length; i++) {
-                if (a[i] != null) {
-                    Node<T> nyNode = new Node<>(a[i], hale, null);
-                    hale = nyNode;
-                    hale.neste = null;
-                    antall++;
-                    endringer++;
-                }
+        if (i < a.length) {
+            Node<T> nyNode = new Node<>(a[i], null, null);
+            hode = nyNode;
+            nyNode.forrige = hode;
+            hode.neste = nyNode;
+            hode.forrige = null;
+            hale = nyNode;
+            hale.neste = null;
+            antall++;
+            endringer++;
+
+            for (i++; i < a.length && a[i] != null; i++) {
+                nyNode.neste = new Node<>(a[i], hale, null);
+                nyNode = nyNode.neste;
+                hale = nyNode;
+                hale.neste = null;
+                antall++;
+                endringer++;
             }
         }
-        // throw new UnsupportedOperationException();
+
     }
+// throw new UnsupportedOperationException();
 
     public Liste<T> subliste(int fra, int til) {
         throw new UnsupportedOperationException();
@@ -203,8 +199,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     //Test oppg 1
     public static void main(String[] args) {
-        Integer[] a = {null, null, null, 1,2,3,4,5,6,7,8};
-        Liste<Integer> liste = new DobbeltLenketListe<>(a);
+        String[] a = {"Ole", null, "Per", "Kari", null};
+        Liste<String> liste = new DobbeltLenketListe<>(a);
         System.out.println(liste.antall() + " " + liste.tom());
     }
 
