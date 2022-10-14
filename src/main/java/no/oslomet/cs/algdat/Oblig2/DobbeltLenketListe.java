@@ -78,7 +78,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 // throw new UnsupportedOperationException();
 
-
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(antall, fra, til); //Kontroller interval
 
@@ -460,19 +459,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         throw new UnsupportedOperationException();
     }
-
-    //Test oppg 1
-    public static void main(String[] args) {
-        String[] s1 = {}, s2 = {"A"}, s3 = {null, "A", null, "B", null};
-        DobbeltLenketListe<String> l1 = new DobbeltLenketListe<>(s1);
-        DobbeltLenketListe<String> l2 = new DobbeltLenketListe<>(s2);
-        DobbeltLenketListe<String> l3 = new DobbeltLenketListe<>(s3);
-        System.out.println(l1.toString() + " " + l2.toString()
-                + " " + l3.toString() + " " + l1.omvendtString() + " "
-                + l2.omvendtString() + " " + l3.omvendtString());
-        // Utskrift: [] [A] [A, B] [] [A] [B, A]
-    }
-
 } // class DobbeltLenketListe
 
 
