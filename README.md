@@ -48,6 +48,37 @@ Videre lager jeg metoden "inneholder". Denne metoden returnerer "true" hvis list
 ellers skal det returneres med "false". 
 
 Oppgave 5:
+Koder metoden "leggInn" som skal ta inn en indeks og en verdi. Verdien skal plasseres på innsendt indeks. Før dette 
+gjøres valideres indeksen mot null og antall allerede registrerte noder. Hvis validering ok, fortsetter programmet. 
+Det gjøres sjekk mot om indeksen er den eneste, første, siste eller mellom to andre noder. Basert på dette 
+oppdateres både den nye nodens og de tilhørende noder sine pekere. 
+
+Oppgave 6: 
+Metodene "fjern" og "boolean fjern" kodet. Den første fjerner verdien på innsendt indeks og returnerer den samtidig. 
+Den andre leter gjennom listen etter innsendt verdi, fjerner hvis funnet og returnerer "true" hvis verdien ble 
+funnet. Hvis verdien ikke er funnet returneres "false".
+Det gjøres sjekk mot om indeksen/verdien er første, siste eller mellom to andre noder. Basert på dette oppdateres de tilhørende noder sine pekere. 
+
+Oppgave 7: 
+Utangspunktet ikke en del av leveringen, da jeg leverer alene. For å få oppgave 8 "bestått", ble jeg nødt til kode 
+oppgave 7 også. Dermed kodet jeg metoden "nullstill". Den tømmer listen for hver node og eterlater alle verdier i 
+"null". Java sin innebygde "søppeltømmer" rydder deretter opp. Jeg brukte den første fremgangsmåten. Metoden starter 
+på hode og går mot hale med hjelpepekeren "neste". For hver node nulles nodeverdien og alle nodens pekere. Til slutt 
+settes både hode og hale til null, antall til 0 og endringer økes. 
+
+Oppgave 8: 
+Koder metoden "next". Den sjekkes om iteratorendringer er lik endringer. Hvis ikke kastes en feilkode. Deretter 
+kastes en feilkode hvis det ikke er flere igjen i listen. Altså hvis metoden "hasNext" ikke er "true". Deretter 
+settes "fjernOK" til true, verdien til "denne" returneres og "denne" flyttes til den neste node. 
+
+Deretter kodet jeg metoden "iterator". Den returnerer en instans av iteratorklassen. 
+
+Videre kodet jeg konstruktøren "DobbeltLenketListeIterator" som setter pekeren "denne" til den noden som hører til 
+den oppgitte indeksen. 
+
+Til slutt kodet jeg metoden "iterator" som tar inn en indeks. Det valideres frøst om indeksen er lovlig med metoden 
+"indekskontroll". Deretter returnerer metoden en instans av iteratorklassen.
+Vedlagt programbit er testet ut og gir forventet resultat.
 
 
 
