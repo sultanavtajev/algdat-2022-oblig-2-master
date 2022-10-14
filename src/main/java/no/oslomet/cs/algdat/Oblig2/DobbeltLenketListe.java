@@ -4,9 +4,7 @@ package no.oslomet.cs.algdat.Oblig2;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.*;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -376,16 +374,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException();
+        //insperiasjon fra kompendiet programkode Programkode 3.3.4 e)
+        //Lag metoden Iterator<T> iterator(). Den skal returnere en instans av iteratorklassen.
+        return new DobbeltLenketListeIterator();
+
+        //throw new UnsupportedOperationException();
     }
 
     public Iterator<T> iterator(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks,false);//Det må først sjekkes at
+        //indeksen er lovlig. Bruk metoden indeksKontroll().
+        new DobbeltLenketListeIterator();
+        DobbeltLenketListeIterator li = new DobbeltLenketListeIterator();
+        li.denne = finnNode(indeks);
+        //Deretter skal den ved hjelp av
+        //konstruktøren i punkt c) returnere en instans av iteratorklassen.
+
+        return li;
+        //throw new UnsupportedOperationException();
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T> {
-        private final Node<T> denne;
-        private final boolean fjernOK;
+        private Node<T> denne;
+        private boolean fjernOK;
         private final int iteratorendringer;
 
         private DobbeltLenketListeIterator() {
@@ -395,7 +406,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         private DobbeltLenketListeIterator(int indeks) {
-            throw new UnsupportedOperationException();
+            denne = finnNode(indeks); // Den skal sette pekeren denne til den noden som hører til den oppgitte indeksen.
+            //. Resten skal være som i den konstruktøren som er ferdigkodet
+            fjernOK = false;
+            iteratorendringer = endringer;
+            //throw new UnsupportedOperationException();
         }
 
         @Override
@@ -405,7 +420,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next() {
-            throw new UnsupportedOperationException();
+            if(!hasNext()){
+                throw new NoSuchElementException("Tomt eller ingen verider igjen"); // Så en NoSuchElementException hvis det ikke er flere igjen i listen (dvs. hvis hasNext() ikke er sann/true).
+            }
+
+            //Lag metoden T next(). Den skal først sjekke om iteratorendringer er lik endringer.
+            if(iteratorendringer != endringer){
+                throw new ConcurrentModificationException(); //Hvis ikke, kastes en ConcurrentModificationException.
+            }
+            //henter inspirasjon fra kompendiet programkode 3.2.4 c) public T next()
+
+            // Deretter
+            //settes fjernOK til sann/true, verdien til denne returneres og denne flyttes til den neste node.
+            fjernOK = true;
+            T denneVerdi = denne.verdi;
+            denne = denne.neste;
+            return denneVerdi;
+
+            //throw new UnsupportedOperationException();
         }
 
         @Override
