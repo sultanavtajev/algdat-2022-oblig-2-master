@@ -394,18 +394,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //insperiasjon fra kompendiet programkode Programkode 3.3.4 e)
         //Lag metoden Iterator<T> iterator(). Den skal returnere en instans av iteratorklassen.
         return new DobbeltLenketListeIterator();
-
         //throw new UnsupportedOperationException();
     }
 
     public Iterator<T> iterator(int indeks) {
-        indeksKontroll(indeks,false);//Det må først sjekkes at
-        //indeksen er lovlig. Bruk metoden indeksKontroll().
+        indeksKontroll(indeks,false);//Sjekker om indeksen er lovlig
         new DobbeltLenketListeIterator();
         DobbeltLenketListeIterator li = new DobbeltLenketListeIterator();
-        li.denne = finnNode(indeks);
-        //Deretter skal den ved hjelp av
-        //konstruktøren i punkt c) returnere en instans av iteratorklassen.
+        li.denne = finnNode(indeks); //Returner deretter en instans av iteratorklassen.
 
         return li;
         //throw new UnsupportedOperationException();
@@ -423,8 +419,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         private DobbeltLenketListeIterator(int indeks) {
-            denne = finnNode(indeks); // Den skal sette pekeren denne til den noden som hører til den oppgitte indeksen.
-            //. Resten skal være som i den konstruktøren som er ferdigkodet
+            denne = finnNode(indeks); //Setter pekeren "denne" til den noden som hører til den oppgitte indeksen.
             fjernOK = false;
             iteratorendringer = endringer;
             //throw new UnsupportedOperationException();
@@ -438,22 +433,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public T next() {
             if(!hasNext()){
-                throw new NoSuchElementException("Tomt eller ingen verider igjen"); // Så en NoSuchElementException hvis det ikke er flere igjen i listen (dvs. hvis hasNext() ikke er sann/true).
+                //Hvis det ikke er flere igjen i listen/hvis hasNext() ikke er sann/true).
+                throw new NoSuchElementException("Tomt eller ingen verider igjen");
             }
 
-            //Lag metoden T next(). Den skal først sjekke om iteratorendringer er lik endringer.
+            //Sjekker om iteratorendringer er lik endringer. Hvis ikke, kast en ConcurrentModificationException.
             if(iteratorendringer != endringer){
-                throw new ConcurrentModificationException(); //Hvis ikke, kastes en ConcurrentModificationException.
+                throw new ConcurrentModificationException();
             }
-            //henter inspirasjon fra kompendiet programkode 3.2.4 c) public T next()
 
-            // Deretter
-            //settes fjernOK til sann/true, verdien til denne returneres og denne flyttes til den neste node.
+            //fjernOK settes til sann/true, verdien til denne returneres og denne flyttes til den neste node.
             fjernOK = true;
             T denneVerdi = denne.verdi;
             denne = denne.neste;
             return denneVerdi;
-
             //throw new UnsupportedOperationException();
         }
 
