@@ -326,7 +326,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        //Har tatt en den inspirasjon fra gruppeinnlevering flere steder. Deriblant i denne oppgaven.
+        //Måtte kode oppgave 7 for å få testen på oppg 8 bestått.
+        //Har valgt metode 1 fra oppgave 7.
+        Node<T> node = hode;
+        Node<T> neste = null;
+
+        while(node!=null){ //Sjekk alle noder frem til siste node
+            neste = node.neste; //Lagre node sin neste
+            node.forrige = null; //Sett til null
+            node.neste = null; //Sett til null
+            node.verdi = null; //Sett til null
+            node = neste; //node kopierer neste og loopen fortsetter til enden
+        }
+
+        hode = hale = null;
+        antall = 0;
+        endringer++;
+        //throw new UnsupportedOperationException();
     }
 
     @Override
