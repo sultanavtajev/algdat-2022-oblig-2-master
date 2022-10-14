@@ -17,7 +17,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
      * @param <T>
      */
     private static final class Node<T> {
-        private T verdi;                   // nodens verdi
+        private final T verdi;                   // nodens verdi
         private Node<T> forrige, neste;    // pekere
 
         private Node(T verdi, Node<T> forrige, Node<T> neste) {
@@ -47,34 +47,36 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public DobbeltLenketListe(T[] a) {
-        //Sjekker om tabellen er null og gir i såfall feilmelding
-        Objects.requireNonNull(a, "Tabellen a er null");
+        Objects.requireNonNull(a, "Tabellen a er null"); //Sjekker om tabellen er null og gir i såfall feilmelding
 
-        //Finner posisjon til første verdi i tabell "a" som ikke er "null"
-        int i = 0;
-        for (; i < a.length && a[i] == null; i++) ;
+        if (a.length != 0) { //Sjekker om tabell har lengde 0
+            int i = 0;  //Finner posisjon til første verdi i tabell "a" som ikke er "null"
+            for (; i < a.length && a[i] == null; i++) ; //Finner første indeks i tabell som ikke er "null"
 
-        if (i < a.length) {
-            Node<T> nyNode = new Node<>(a[i], null, null);
-            hode = nyNode;
-            nyNode.forrige = hode;
-            hode.neste = nyNode;
-            hode.forrige = null;
-            hale = nyNode;
-            hale.neste = null;
-            antall++;
-            endringer++;
-
-            for (i++; i < a.length && a[i] != null; i++) {
-                nyNode.neste = new Node<>(a[i], hale, null);
-                nyNode = nyNode.neste;
+            if (i < a.length) {
+                Node<T> nyNode = new Node<>(a[i], null, null);
+                hode = nyNode;
+                hode.neste = nyNode;
+                hode.forrige = null;
+                nyNode.forrige = hode;
                 hale = nyNode;
                 hale.neste = null;
                 antall++;
                 endringer++;
+                i++;
+
+                for (; i < a.length; i++) {
+                    if (a[i] != null) {
+                        nyNode.neste = new Node<>(a[i], hale, null);
+                        nyNode = nyNode.neste;
+                        hale = nyNode;
+                        hale.neste = null;
+                        antall++;
+                        endringer++;
+                    }
+                }
             }
         }
-
     }
 // throw new UnsupportedOperationException();
 
@@ -90,11 +92,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean tom() {
-        if (antall == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return antall == 0;
         //throw new UnsupportedOperationException();
     }
 
@@ -145,11 +143,45 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+        StringBuilder s = new StringBuilder(); //Bruker Stringbuilder-klassen for å opprette en streng
+        s.append('['); //Starter strengen med "["
+
+        if (!tom()) { //Sjekk om listen er tom
+        Node<T> node = hode; //Hent verdien til noden som hodet peker på
+        s.append(node.verdi); //Legg verdien inn i strengen
+        node = node.neste; //Pek mot neste node i listen
+
+        while (node != null) { //Kjør gjennom listen inntil vi kommer til "null" som er siste node sin "neste"
+            s.append(',');
+            s.append(' ');
+            s.append(node.verdi);
+            node = node.neste;
+             }
+        }
+        s.append(']'); //Avslutt strengen med "["
+        return s.toString(); //Returner strengen
+        //throw new UnsupportedOperationException();
     }
 
     public String omvendtString() {
-        throw new UnsupportedOperationException();
+        StringBuilder s = new StringBuilder(); //Bruker Stringbuilder-klassen for å opprette en streng
+        s.append('['); //Starter strengen med "["
+
+        if (!tom()) { //Sjekk om listen er tom
+            Node<T> node = hale; //Hent verdien til noden som hodet peker på
+            s.append(node.verdi); //Legg verdien inn i strengen
+            node = node.forrige; //Pek mot neste node i listen
+
+            while (node != null) { //Kjør gjennom listen inntil vi kommer til "null" som er siste node sin "neste"
+                s.append(',');
+                s.append(' ');
+                s.append(node.verdi);
+                node = node.forrige;
+            }
+        }
+        s.append(']'); //Avslutt strengen med "["
+        return s.toString(); //Returner strengen
+        //throw new UnsupportedOperationException();
     }
 
     @Override
@@ -162,9 +194,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T> {
-        private Node<T> denne;
-        private boolean fjernOK;
-        private int iteratorendringer;
+        private final Node<T> denne;
+        private final boolean fjernOK;
+        private final int iteratorendringer;
 
         private DobbeltLenketListeIterator() {
             denne = hode;     // p starter på den første i listen
@@ -199,9 +231,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     //Test oppg 1
     public static void main(String[] args) {
-        String[] a = {"Ole", null, "Per", "Kari", null};
-        Liste<String> liste = new DobbeltLenketListe<>(a);
-        System.out.println(liste.antall() + " " + liste.tom());
+        String[] s1 = {}, s2 = {"A"}, s3 = {null,"A",null,"B",null};
+        DobbeltLenketListe<String> l1 = new DobbeltLenketListe<>(s1);
+        DobbeltLenketListe<String> l2 = new DobbeltLenketListe<>(s2);
+        DobbeltLenketListe<String> l3 = new DobbeltLenketListe<>(s3);
+        System.out.println(l1.toString() + " " + l2.toString()
+                + " " + l3.toString() + " " + l1.omvendtString() + " "
+                + l2.omvendtString() + " " + l3.omvendtString());
+// Utskrift: [] [A] [A, B] [] [A] [B, A]
     }
 
 } // class DobbeltLenketListe
